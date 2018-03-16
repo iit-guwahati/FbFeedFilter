@@ -1,6 +1,6 @@
 {
-  "manifest_version": 1,
-  "name": "feedfilter",
+  "manifest_version": 2,
+  "name": "fbfeedfilter",
   "description": "Control your feed on social.",
   "version": "1.0",
   "browser_action": {
@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches" : ["<all_urls>"],
-      "js": ["jquery.js","content.js"]
+      "js": ["content.js"]
     }
   ],
   "permissions": [
