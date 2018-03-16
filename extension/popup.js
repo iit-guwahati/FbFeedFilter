@@ -1,43 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "localhost:8000/login", success: function(result){
-            $("#login_btn").console.log('logging in');
-        }});
-    });
-});
-</script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "localhost:8000/register", success: function(result){
-            $("#register_btn").console.log('please wait');
-        }});
-    });
-});
-</script>
 
-<script>
+$(document).ready(function(){
+    var username = $('#login_name').val(); 
+    var password = $('#login_password').val();
+    $("button").click(function(){
+        $.ajax({
+            url: "localhost:8000/login",
+            data: {
+                'username':username,
+                'password':password
+            }
+            success: function(result){
+                        console.log('logging in');
+                    }
+        });
+    });
+});
+
+$(document).ready(function(){
+    var username = $('#register_name').val(); 
+    var password = $('#register_password').val();
+    var emails = $('#register_email').val();
+    $("button").click(function(){
+        $.ajax({
+            url: "localhost:8000/register", 
+            data: {
+                'username':username,
+                'password':password,
+                'email': email
+            }
+            success: function(result){
+                console.log('please wait');
+                }
+        });
+    });
+});
+
 $(document).ready(function(){
     $("button").click(function(){
         $.ajax({url: "logout", success: function(result){
-            $("#logout").console.log('logging you out');
+            console.log('logging you out');
         }});
     });
 });
+
 </script>
-
-
-</head>
-<body>
-
-<button id='login_btn'>Login</button>
-<button id='logout_btn'>Logout</button>
-<button id='register_btn'>Register</button>
-
-</body>
-</html>
